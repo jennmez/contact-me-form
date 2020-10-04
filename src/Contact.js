@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './contact.css';
 
 function Contact() {
   const [name, setName] = useState('');
@@ -28,44 +29,57 @@ function Contact() {
     setMessage('');
   }
   return (
-    <div className="contact">
-      <h1 className="contact-header">Let's Talk</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={handleNameChange}
-          />
+    // <div className="contact">
+    //   <h1 className="contact-header">Let's Talk</h1>
+    <form className="contact-form" onSubmit={handleSubmit}>
+      <div className="input-group">
+        <label for="name" className="contact-label">
+          Name
         </label>
-        <label>
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleEmailChange}
-          />
+        <input
+          id="name"
+          className="contact-input"
+          type="text"
+          name="name"
+          value={name}
+          onChange={handleNameChange}
+          required
+        />
+      </div>
+      <div className="input-group">
+        <label for="email" className="contact-label">
+          Email
         </label>
-        <label>
-          Message:
-          <input
-            as="textarea"
-            name="message"
-            value={message}
-            onChange={handleMessageChange}
-          />
-        </label>
-        <button type="submit" disabled={disabled}>
-          Send
-        </button>
+        <input
+          id="email"
+          className="contact-input"
+          type="email"
+          name="email"
+          value={email}
+          onChange={handleEmailChange}
+          required
+        />
+      </div>
+      {/* <label for="message" className="contact-label">
+        Message
+      </label>
+      <textarea
+        id="message"
+        className="contact-input"
+        name="message"
+        rows={5}
+        value={message}
+        onChange={handleMessageChange}
+        required
+      /> */}
+      <button type="submit" disabled={disabled}>
+        Send
+      </button>
 
-        {emailSent === true && <p>Email Sent</p>}
-        {emailSent === false && <p>Email Not Sent</p>}
-      </form>
-    </div>
+      {emailSent === true && <p>Email Sent</p>}
+      {emailSent === false && <p>Email Not Sent</p>}
+    </form>
+    // {/* </div> */}
   );
 }
 
