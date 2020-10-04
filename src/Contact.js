@@ -29,24 +29,22 @@ function Contact() {
     setMessage('');
   }
   return (
-    // <div className="contact">
-    //   <h1 className="contact-header">Let's Talk</h1>
-    <form className="contact-form" onSubmit={handleSubmit}>
-      <div className="input-group">
+    <div className="container">
+      {/* <h1 className="contact-header">Let's Talk</h1> */}
+      <div className="contact-form" onSubmit={handleSubmit}>
+        <div className="form-field">
+          <input
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleNameChange}
+            required
+          />
+        </div>
         <label for="name" className="contact-label">
-          Name
+          <span className="content">Name</span>
         </label>
-        <input
-          id="name"
-          className="contact-input"
-          type="text"
-          name="name"
-          value={name}
-          onChange={handleNameChange}
-          required
-        />
-      </div>
-      <div className="input-group">
+        {/* <div className="contact-input-group">
         <label for="email" className="contact-label">
           Email
         </label>
@@ -59,27 +57,31 @@ function Contact() {
           onChange={handleEmailChange}
           required
         />
-      </div>
-      {/* <label for="message" className="contact-label">
-        Message
-      </label>
-      <textarea
-        id="message"
-        className="contact-input"
-        name="message"
-        rows={5}
-        value={message}
-        onChange={handleMessageChange}
-        required
-      /> */}
-      <button type="submit" disabled={disabled}>
-        Send
-      </button>
+      </div> */}
+        <div className="form-field">
+          <textarea
+            id="message"
+            className="contact-input"
+            name="message"
+            rows={5}
+            value={message}
+            onChange={handleMessageChange}
+            required
+          />
+          <label for="message" className="contact-label">
+            <span className="content">Message</span>
+          </label>
+        </div>
+        <div className="form-field">
+          <button type="submit" disabled={disabled}>
+            Send
+          </button>
+        </div>
 
-      {emailSent === true && <p>Email Sent</p>}
-      {emailSent === false && <p>Email Not Sent</p>}
-    </form>
-    // {/* </div> */}
+        {emailSent === true && <p>Email Sent</p>}
+        {emailSent === false && <p>Email Not Sent</p>}
+      </div>
+    </div>
   );
 }
 

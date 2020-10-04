@@ -1,12 +1,57 @@
-/* .contact {
+.container {
+  margin: 0 auto;
+  max-width: 550px;
+}
+
+/* like body*/
+.contact-form {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 1em;
-  background-color: #fff6f3;
-  border-radius: 10px;
-  border: 3px solid #71c8e2;
-  line-height: 1.5;
-} */
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.form-field {
+  /* display: block; */
+  width: 50%;
+  position: relative;
+  height: 50px;
+}
+
+.form-field input {
+  width: 100%;
+  height: 100%;
+  color: rgb(55, 55, 55);
+  padding-top: 20px;
+  border: none;
+  z-index: 2;
+  background: none;
+}
+
+.form-field label {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  z-index: -1;
+  border: none;
+  border-bottom: 1px solid rgb(55, 55, 55);
+}
+
+.form-field label::after {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  content: '';
+  z-index: -1;
+  border: none;
+  border-bottom: 1px solid #71c8e2;
+}
 
 /* * {
   box-sizing: border-box;
@@ -17,17 +62,7 @@
   font-weight: 500;
 } */
 
-.contact-form {
-  display: block;
-  position: relative;
-  background-color: white;
-  width: 550px;
-  height: 550px;
-  margin: 50px auto;
-  padding: 30px;
-}
-
-label {
+/* label {
   display: block;
   position: relative;
   top: -20px;
@@ -84,4 +119,4 @@ textarea:valid + label {
   top: -40px;
   font-size: 0.5em;
   color: #71c8e2;
-}
+} */
