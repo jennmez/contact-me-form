@@ -4,6 +4,7 @@ import './App.scss';
 
 function App() {
   const inputRef = useRef(null);
+  const messageRef = useRef(null);
 
   return (
     <div className="App">
@@ -34,6 +35,7 @@ function App() {
               type="text"
               className="input"
               placeholder=" "
+              ref={inputRef}
               required
             />
             <label htmlFor="email" className="label">
@@ -50,6 +52,7 @@ function App() {
               className="textarea"
               rows="10"
               placeholder=" "
+              ref={messageRef}
               required
             />
             <label htmlFor="message" className="label">
