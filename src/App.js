@@ -36,8 +36,24 @@ function App() {
               placeholder=" "
               required
             />
-            <label htmlFor="name" className="label">
+            <label htmlFor="email" className="label">
               Email
+            </label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Write me a note...or not. That's up to you!</legend>
+          <div className="field-outlined">
+            <textarea
+              id="message"
+              name="message"
+              className="textarea"
+              rows="10"
+              placeholder=" "
+              required
+            />
+            <label htmlFor="message" className="label">
+              Message
             </label>
           </div>
         </fieldset>
