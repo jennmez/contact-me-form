@@ -49,10 +49,10 @@ legend {
   font-weight: 500;
   color: grey;
   pointer-events: none;
-  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 1s ease;
   position: absolute;
   top: 16px;
-  /* left: 16px; */
+  left: 16px;
 }
 
 .label:focus {
@@ -63,9 +63,9 @@ legend {
   font-size: 12px;
 }
 
-.label:valid {
+/* .label:valid {
   color: blue;
-}
+} */
 /*
 .line {
   height: 2px;

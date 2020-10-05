@@ -1,18 +1,44 @@
-import React from 'react';
-import './App.css';
+import React, { useRef } from 'react';
+// import './App.css';
+import './App.scss';
 
 function App() {
+  const inputRef = useRef(null);
+
   return (
     <div className="App">
       <form action="">
         <fieldset>
-          <legend>Write in your name</legend>
+          <legend>Tell me your name!</legend>
           <div className="field-outlined">
-            <input id="name" type="text" className="input" required />
+            <input
+              id="name"
+              name="name"
+              type="text"
+              className="input"
+              placeholder=" "
+              ref={inputRef}
+              required
+            />
             <label htmlFor="name" className="label">
               Name
             </label>
-            {/* <span className="line"></span> */}
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>What's your email?</legend>
+          <div className="field-outlined">
+            <input
+              id="email"
+              name="email"
+              type="text"
+              className="input"
+              placeholder=" "
+              required
+            />
+            <label htmlFor="name" className="label">
+              Email
+            </label>
           </div>
         </fieldset>
         <button type="submit">Send</button>
