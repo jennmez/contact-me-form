@@ -70,17 +70,25 @@ legend {
   // caret > denotes nesting the element in the parent element
   > .input {
     @extend %input;
-    &:hover {
-      border-color: $blue;
-    }
-    &:focus {
-      border: 2px solid $blue;
-      /*  "~" combinator selects the general sibling which will work in all cases*/
+    &.error {
+      border: 2px solid $red;
       ~ .label {
-        color: $blue;
         @extend %label-outlined;
+        color: $red;
       }
     }
+  }
+  &:hover {
+    border-color: $blue;
+  }
+  &:focus {
+    border: 2px solid $blue;
+    /*  "~" combinator selects the general sibling which will work in all cases*/
+    ~ .label {
+      color: $blue;
+      @extend %label-outlined;
+    }
+
     &:valid {
       ~ .label {
         @extend %label-outlined;

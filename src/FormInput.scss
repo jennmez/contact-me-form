@@ -70,6 +70,9 @@ legend {
   // caret > denotes nesting the element in the parent element
   > .input {
     @extend %input;
+    &.error {
+      border: 2px solid $red;
+    }
     &:hover {
       border-color: $blue;
     }
@@ -82,9 +85,19 @@ legend {
       }
     }
     &:valid {
-      ~ .label {
+      + .label {
         @extend %label-outlined;
       }
+    }
+  }
+  > .input.error {
+    border: 2px solid $red;
+    ~ .label {
+      @extend %label-outlined;
+      color: $red;
+    }
+    ~ p {
+      color: $red;
     }
   }
   > .label {

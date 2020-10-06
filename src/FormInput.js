@@ -1,23 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './FormInput.scss';
 import useForm from './useForm';
+import validate from './utility';
 
 const FormInput = () => {
-  const { handleChange, handleSubmit, values } = useForm();
-  // const [name, setName] = useState('');
-
-  // function handleChange(event) {
-  //   let name = event.target.value;
-  //   setName(name);
-  //   console.log('hC', name);
-  // }
-
-  // function handleSubmit(event) {
-  //   event.preventDefault();
-  //   console.log('hS', name);
-  //   // setName('');
-  // }
-
+  const { handleChange, handleSubmit, values, errors } = useForm(validate);
   return (
     <form onSubmit={handleSubmit}>
       <fieldset>
@@ -27,13 +14,14 @@ const FormInput = () => {
             id="visitorName"
             name="visitorName"
             type="text"
-            className="input"
+            className={`input ${errors.visitorName && 'error'}`}
             placeholder=" "
             value={values.visitorName}
             onChange={handleChange}
             required
           />
-          <label htmlFor="name" className="label">
+          {errors.visitorName && <p className="error">{errors.visitorName}</p>}
+          <label htmlFor="visitorName" className="label">
             Name
           </label>
         </div>
@@ -45,12 +33,13 @@ const FormInput = () => {
             id="email"
             name="email"
             type="text"
-            className="input"
+            className={`input ${errors.email && 'error'}`}
             placeholder=" "
             value={values.email}
             onChange={handleChange}
             required
           />
+          {errors.email && <p className="error">{errors.email}</p>}
           <label htmlFor="email" className="label">
             Email
           </label>
@@ -67,7 +56,6 @@ const FormInput = () => {
             placeholder=" "
             value={values.message}
             onChange={handleChange}
-            required
           />
           <label htmlFor="message" className="label">
             Message
