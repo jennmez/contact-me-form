@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
-import './FormContainer.scss';
+import './FormInput.scss';
+import useForm from './useForm';
 
-function FormContainer() {
-  const [name, setName] = useState(undefined);
+const FormInput = () => {
+  const { handleChange, handleSubmit, values } = useForm();
+  // const [name, setName] = useState('');
 
-  function handleChange(event) {
-    let name = event.target.bal;
-    setName(name);
-    console.log('hC', name);
-  }
+  // function handleChange(event) {
+  //   let name = event.target.value;
+  //   setName(name);
+  //   console.log('hC', name);
+  // }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    let name = event;
-    console.log('hS', name);
-    // setName('');
-  }
+  // function handleSubmit(event) {
+  //   event.preventDefault();
+  //   console.log('hS', name);
+  //   // setName('');
+  // }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -23,13 +24,12 @@ function FormContainer() {
         <legend>Tell me your name!</legend>
         <div className="field-outlined">
           <input
-            id="name"
-            name="name"
+            id="visitorName"
+            name="visitorName"
             type="text"
             className="input"
             placeholder=" "
-            value={name}
-            // ref={inputRef}
+            value={values.visitorName}
             onChange={handleChange}
             required
           />
@@ -47,7 +47,8 @@ function FormContainer() {
             type="text"
             className="input"
             placeholder=" "
-            // ref={inputRef}
+            value={values.email}
+            onChange={handleChange}
             required
           />
           <label htmlFor="email" className="label">
@@ -64,6 +65,8 @@ function FormContainer() {
             className="textarea"
             rows="10"
             placeholder=" "
+            value={values.message}
+            onChange={handleChange}
             required
           />
           <label htmlFor="message" className="label">
@@ -74,6 +77,6 @@ function FormContainer() {
       <button type="submit">Send</button>
     </form>
   );
-}
+};
 
-export default FormContainer;
+export default FormInput;

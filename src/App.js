@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.scss';
-import FormContainer from './FormContainer';
+import Form from './Form';
 
 function App() {
   return (
     <div className="App">
       <h1>Let's Chat!</h1>
-      <FormContainer />
+      <Form />
     </div>
   );
 }
