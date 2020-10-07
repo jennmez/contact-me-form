@@ -50,7 +50,7 @@ const FormInput = ({ submitForm }) => {
         </div>
       </fieldset>
       <fieldset>
-        <legend>Write me a note...or not. That's up to you!</legend>
+        <legend>Write me a note; it doesn't have to be long!</legend>
         <div className="field-outlined">
           <textarea
             id="message"
@@ -60,6 +60,7 @@ const FormInput = ({ submitForm }) => {
             placeholder=" "
             value={values.message}
             onChange={handleChange}
+            required
           />
           <label htmlFor="message" className="label">
             Message
