@@ -3,8 +3,12 @@ import './FormInput.scss';
 import useForm from './useForm';
 import validate from './utility';
 
-const FormInput = () => {
-  const { handleChange, handleSubmit, values, errors } = useForm(validate);
+const FormInput = ({ submitForm }) => {
+  const { handleChange, handleSubmit, values, errors } = useForm(
+    submitForm,
+    validate
+  );
+
   return (
     <form onSubmit={handleSubmit}>
       <fieldset>
