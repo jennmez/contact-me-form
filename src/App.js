@@ -1,13 +1,12 @@
 import React from 'react';
-import './App.css';
-import Contact from './Contact.js';
+import './App.scss';
+import Form from './Form';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Contact />
-      </header>
+      <h1>Let's Chat!</h1>
+      <Form />
     </div>
   );
 }

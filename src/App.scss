@@ -1,0 +1,19 @@
+$white: #fff;
+$blue: #71c8e2;
+$red: #f14c2e;
+$grey: #312d2d;
+$pink: #ffe7e2;
+
+.App {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1 {
+  color: $red;
+  text-transform: uppercase;
+  font-weight: 500;
+}
