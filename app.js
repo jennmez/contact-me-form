@@ -1,18 +1,21 @@
 const express = require('express');
+const app = express();
 const bodyParser = require('body-parser');
-//cross origin resource sharing, one
-const cors = require('cors');
+const morgan = require('morgan');
+
 const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
-// const sendGrid = require('@sendgrid/mail');
+//cross origin resource sharing, one
+const cors = require('cors');
 
-const app = express();
 dotenv.config();
 
+app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors());
+// app.options('*', cors());
 
 // app.use((req, res, next) => {
 //   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -24,15 +27,18 @@ app.use(cors());
 //     'Access-Control-Allow-Methods',
 //     'GET, POST, PATCH, DELETE, OPTIONS'
 //   );
+//   res.setHeader('Access-Control-Allow-Credentials', true);
+
 //   next();
 // });
 
 app.get('/', (req, res, next) => {
-  res.send('API Status: Running');
+  res.sendFile(__dirname + '/index.html');
 });
 
 // POST route from contact form
-app.post('/contact', (req, res) => {
+app.post('/api/contact', (req, res) => {
+  console.log('entered route');
   // Instantiate the SMTP server
   const smtpTrans = nodemailer.createTransport({
     host: 'smtp.gmail.com',
@@ -49,51 +55,18 @@ app.post('/contact', (req, res) => {
     from: req.body.email, // This is ignored by Gmail
     to: process.env.GMAIL_USER,
     subject: `New message from your React Contact Form Page`,
-    text: `${req.body.visitorName} at (${req.body.email}) says: ${req.body.message}`,
+    text: `${req.body.visitorName} at (${req.body.email}) says: ${req.body.trimmedMsg}`,
   };
 
   // Attempt to send the email
   smtpTrans.sendMail(mailOpts, (error, response) => {
     if (error) {
-      res.json('contact-failure'); // Show a page indicating failure
+      res.json('failure'); // Show a page indicating failure
     } else {
-      res.json('contact-success'); // Show a page indicating success
+      res.json('success'); // Show a page indicating success
     }
   });
 });
-
-// const sgMail = require('@sendgrid/mail');
-
-// app.post('/email', (req, res, next) => {
-//   const user = req.body;
-//   console.log('u:::::', user);
-//   sgMail.setApiKey(process.env.REACT_APP_SG_API_KEY);
-//   const msg = {
-//     to: 'jennmez@gmail.com',
-//     from: user.email,
-//     subject: `${user.name} sent you a msg from ReactApp`,
-//     text: user.message,
-//     html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-//   };
-//   sgMail
-//     .send(msg)
-//     .then(() => {
-//       console.log('Email sent');
-//     })
-//     .catch((error) => {
-//       console.error(error);
-
-//       if (error.response) {
-//         // Extract error msg
-//         const { message, code, response } = error;
-
-//         // Extract response msg
-//         const { headers, body } = response;
-
-//         console.error(body);
-//       }
-//     });
-// });
 
 const PORT = process.env.PORT || 3030;
 

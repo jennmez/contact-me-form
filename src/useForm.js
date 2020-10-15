@@ -18,15 +18,19 @@ const useForm = (submitForm, validate) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     setErrors(validate(values));
+    setSubmitting(true);
+    let { email, visitorName, message } = values;
+    let trimmedMsg = message.trim();
     try {
-      console.log(values);
-      await axios.post('/contact', values).then(function (response) {
-        setSubmitting(true);
-        console.log('you did it!', response.data);
-      });
+      await axios
+        .post('/api/contact', { email, visitorName, trimmedMsg })
+        .then((res) => {
+          console.log('this:', res.data);
+        });
     } catch (err) {
-      console.error('this is axios err:', err);
+      console.error('error msg sent from server', err);
     }
   };
 
