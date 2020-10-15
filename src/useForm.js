@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import axios from 'axios';
+
 const useForm = (submitForm, validate) => {
   const [values, setValues] = useState({
     visitorName: '',
@@ -14,10 +16,18 @@ const useForm = (submitForm, validate) => {
     setValues({ ...values, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors(validate(values));
-    setSubmitting(true);
+    try {
+      console.log(values);
+      await axios.post('/contact', values).then(function (response) {
+        setSubmitting(true);
+        console.log('you did it!', response.data);
+      });
+    } catch (err) {
+      console.error('this is axios err:', err);
+    }
   };
 
   useEffect(() => {

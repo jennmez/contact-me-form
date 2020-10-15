@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 //cross origin resource sharing, one
-// const cors = require('cors');
+const cors = require('cors');
 const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
 // const sendGrid = require('@sendgrid/mail');
@@ -12,7 +12,7 @@ dotenv.config();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use(cors());
+app.use(cors());
 
 // app.use((req, res, next) => {
 //   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -49,7 +49,7 @@ app.post('/contact', (req, res) => {
     from: req.body.email, // This is ignored by Gmail
     to: process.env.GMAIL_USER,
     subject: `New message from your React Contact Form Page`,
-    text: `${req.body.name} at (${req.body.email}) says: ${req.body.message}`,
+    text: `${req.body.visitorName} at (${req.body.email}) says: ${req.body.message}`,
   };
 
   // Attempt to send the email
