@@ -4,14 +4,22 @@ import FormInput from './FormInput';
 import FormSuccess from './FormSuccess';
 
 function Form() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(true);
 
   function submitForm() {
     setIsSubmitted(true);
   }
+
+  function returnToForm() {
+    setIsSubmitted(false);
+  }
   return (
     <>
-      {!isSubmitted ? <FormInput submitForm={submitForm} /> : <FormSuccess />}
+      {!isSubmitted ? (
+        <FormInput submitForm={submitForm} />
+      ) : (
+        <FormSuccess returnToForm={returnToForm} />
+      )}
     </>
   );
 }

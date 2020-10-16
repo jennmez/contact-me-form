@@ -18,7 +18,6 @@ const useForm = (submitForm, validate) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setErrors(validate(values));
     setSubmitting(true);
     let { email, visitorName, message } = values;
@@ -38,7 +37,7 @@ const useForm = (submitForm, validate) => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
       submitForm();
     }
-  }, [errors]);
+  }, [errors, isSubmitting]);
 
   return { handleChange, handleSubmit, values, errors };
 };

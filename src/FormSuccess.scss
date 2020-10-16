@@ -1,0 +1,49 @@
+$white: #fff;
+$blue: #71c8e2;
+$red: #f14c2e;
+$grey: #312d2d;
+$pink: #ffe7e2;
+
+.success {
+  padding: 2em;
+  text-align: center;
+  border-radius: 4px;
+  border: 2px solid $grey;
+}
+
+h2 {
+  color: $grey;
+  padding: 0.75em;
+}
+
+.icon {
+  position: relative;
+  margin: 0 auto;
+  margin-top: -75px;
+  background: $blue;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  span {
+    position: relative;
+    font-size: 4em;
+    color: $white;
+    text-align: center;
+    padding-top: 20px;
+  }
+}
+
+button {
+  background-color: $white;
+  text-transform: uppercase;
+  color: $grey;
+  padding: 15px;
+  border-radius: 4px;
+  border: 3px solid $blue;
+  font-weight: 600;
+  font-size: 14px;
+  outline: none;
+  &:hover {
+    background-color: $blue;
+  }
+}
