@@ -12,7 +12,6 @@ const FormInput = ({ submitForm }) => {
   return (
     <>
       <h1>Let's Chat!</h1>
-
       <form onSubmit={handleSubmit}>
         <fieldset>
           <legend>Tell me your name!</legend>
