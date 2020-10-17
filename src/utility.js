@@ -1,6 +1,5 @@
 //validation of input
 export default function validate(values) {
-  console.log(values);
   let errors = {};
   //if there is no name, display message
   if (!values.visitorName.trim()) {
