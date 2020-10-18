@@ -15,11 +15,13 @@ function Form() {
   }
   return (
     <>
-      {!isSubmitted ? (
-        <FormInput submitForm={submitForm} />
-      ) : (
-        <FormSuccess returnToForm={returnToForm} />
-      )}
+      <div className="form-container">
+        {!isSubmitted ? (
+          <FormInput submitForm={submitForm} />
+        ) : (
+          <FormSuccess returnToForm={returnToForm} />
+        )}
+      </div>
     </>
   );
 }
