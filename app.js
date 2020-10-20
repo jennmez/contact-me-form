@@ -49,7 +49,7 @@ app.post('/api/contact', (req, res) => {
         pass: process.env.GMAIL_PASS,
       },
     });
-
+    console.log(req.body);
     // Specify what the email will look like
     const mailOpts = {
       from: req.body.email, // This is ignored by Gmail
